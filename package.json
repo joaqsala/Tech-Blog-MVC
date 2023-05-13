@@ -4,6 +4,8 @@
   "description": "Set up and manage a tech blog with handlebars and an mvc structure",
   "main": "server.js",
   "scripts": {
+    "start": "node server.js",
+    "seed": "node seeds/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
