@@ -15,7 +15,7 @@ Comment.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    comment_on_blog: {
+    on_which_blog: {
       type: DataTypes.STRING,
       allowNull: false,
       references: {
@@ -23,7 +23,7 @@ Comment.init(
         key: 'id',
       },
     },
-    made_comment: {
+    by_which_user: {
       type: DataTypes.STRING,
       allowNull: false,
       references: {
