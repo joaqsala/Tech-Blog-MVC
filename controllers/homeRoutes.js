@@ -1,19 +1,24 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { Blog, User } = require('../models');
 const withAuth = require('../utils/auth');
 //withAuth is only used in the front end not the backend api routes
 
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    const userData = await User.findAll({
-      attributes: { exclude: ['password'] },
-      order: [['name', 'ASC']],
+    const blogData = await Blog.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
     });
-
-    const users = userData.map((project) => project.get({ plain: true }));
+    console.log(blogData);
+    const blogs = blogData.map((blog) => blog.get({ plain: true }));
+    console.log(blogs)
 
     res.render('homepage', {
-      users,
+      blogs,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
