@@ -19,7 +19,8 @@ router.get('/', async (req, res) => {
 
     res.render('homepage', {
       blogs,
-      logged_in: req.session.logged_in,
+      // logged_in: req.session.logged_in, 
+      header: "CheezeMe",
     });
   } catch (err) {
     res.status(500).json(err);
