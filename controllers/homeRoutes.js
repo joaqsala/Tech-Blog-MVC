@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 
     res.render('homepage', {
       blogs,
-      // logged_in: req.session.logged_in, 
+      logged_in: req.session.logged_in, 
       header: "CheezeMe",
     });
   } catch (err) {
@@ -26,6 +26,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+//route to get login page
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/');
@@ -35,13 +36,15 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-router.get('/sign-up', (req, res) => {
+
+
+router.get('/signup', (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/');
     return;
   }
 
-  res.render('signUp');
+  res.render('signup');
 });
 
 module.exports = router;
