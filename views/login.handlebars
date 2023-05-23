@@ -1,32 +1,43 @@
 <h2>Login</h2>
 
-<div class='login-form'>
-<div class="row g-3 align-items-center pb-2">
-  <div class="col-auto">
-    <label for="username-login" class="col-form-label">Username</label>
+<form class="login-form">
+  <div class="row g-3 align-items-center pb-2">
+    <div class="col-auto">
+      <label for="username-login" class="col-form-label">Username</label>
+    </div>
+    <div class="col-auto">
+      <input
+        type="email"
+        id="username-login"
+        class="form-control"
+        aria-labelledby="passwordHelpInline"
+      />
+    </div>
   </div>
-  <div class="col-auto">
-    <input type="email" id="username-login" class="form-control" aria-labelledby="passwordHelpInline">
+  <div class="row g-3 align-items-center">
+    <div class="col-auto">
+      <label for="password-login" class="col-form-label">Password</label>
+    </div>
+    <div class="col-auto">
+      <input
+        type="password"
+        id="password-login"
+        class="form-control"
+        aria-labelledby="passwordHelpInline"
+      />
+    </div>
+    <div class="col-auto">
+      <span id="passwordHelpInline" class="form-text">
+        Must be 8-20 characters long.
+      </span>
+    </div>
   </div>
-</div>
-<div class="row g-3 align-items-center">
-  <div class="col-auto">
-    <label for="password-login" class="col-form-label">Password</label>
+  <div class="p-3">
+    <button type="submit" class="btn btn-primary">login</button>
   </div>
-  <div class="col-auto">
-    <input type="password" id="password-login" class="form-control" aria-labelledby="passwordHelpInline">
-  </div>
-  <div class="col-auto">
-    <span id="passwordHelpInline" class="form-text">
-      Must be 8-20 characters long.
-    </span>
-  </div>
-</div>
-<div class="p-3">
-  <button type="submit" class="btn btn-primary">login</button>
-</div>
-</div>
+<form/>
 <div class="m-3">
-  If you are new to the site, please <a href='/sign-up'>sign up</a>.
+  If you are new to the site, please
+  <a href="/sign-up">sign up</a>.
 </div>
 <script src="/js/login.js"></script>
