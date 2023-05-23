@@ -1,17 +1,30 @@
 <h2>Login</h2>
 
-<form class="form login-form">
-  <div class="form-group">
-    <label for="username-login">username:</label>
-    <input class="form-input" type="text" id="username-login" />
+<div class="row g-3 align-items-center">
+  <div class="col-auto">
+    <label for="inputPassword6" class="col-form-label">Username</label>
   </div>
-  <div class="form-group">
-    <label for="password-login">password:</label>
-    <input class="form-input" type="password" id="password-login" />
+  <div class="col-auto">
+    <input type="password" id="inputPassword6" class="form-control" aria-labelledby="passwordHelpInline">
   </div>
-  <div class="form-group">
-    <button class="btn btn-primary" type="submit">login</button>
+</div>
+<div class="row g-3 align-items-center">
+  <div class="col-auto">
+    <label for="inputPassword6" class="col-form-label">Password</label>
   </div>
-</form>
-
+  <div class="col-auto">
+    <input type="password" id="inputPassword6" class="form-control" aria-labelledby="passwordHelpInline">
+  </div>
+  <div class="col-auto">
+    <span id="passwordHelpInline" class="form-text">
+      Must be 8-20 characters long.
+    </span>
+  </div>
+</div>
+<div class="p-3">
+  <button type="button" class="btn btn-primary">login</button>
+</div>
+<div class="m-3">
+  If you are new to the site, please <a href='/sign-up'>sign up</a>.
+</div>
 <script src="/js/login.js"></script>
