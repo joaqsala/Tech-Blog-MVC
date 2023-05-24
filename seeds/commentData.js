@@ -5,15 +5,15 @@ const commentdata = [
     comment_content: 'Xtremely good observation.',
     blog_id: 1,
     user_id: 2,
-    createdAt: "2023-05-13 12:54:28",
-    updatedAt: "2023-05-13 12:54:28",
+    commented_on: "2023-05-13 12:54:28",
+    updated_on: "2023-05-13 12:54:28",
   },
   {
     comment_content: 'Serializing makes me want eat cereal.',
     blog_id: 2,
     user_id: 1,
-    createdAt: "2023-05-13 12:56:10",
-    updatedAt: "2023-05-13 12:56:10",
+    commented_on: "2023-05-13 12:56:10",
+    updated_on: "2023-05-13 12:56:10",
   },
 ];
 

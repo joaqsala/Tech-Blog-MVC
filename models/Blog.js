@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Blog extends Model {}
@@ -19,6 +19,14 @@ Blog.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    created_on: {
+      type: Sequelize.DATE,
+      allowNull: false,
+    },
+    updated_on: {
+      type: Sequelize.DATE,
+      allowNull: true,
+    },
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -30,7 +38,7 @@ Blog.init(
   },
   {
     sequelize,
-    timestamps: true,
+    timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: 'blog',
