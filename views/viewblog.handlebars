@@ -1,14 +1,6 @@
 <h2>Need to change title</h2>
 
-1. {{blog.blog_title}}
-2. {{blog}}
-3. {{blog_title}}
-4. {{title}}
-5. {{blogs.blog_title}}
-6. {{blogs}}
-
-
-    <div class="pt-4">
+    <div class="pt-4 pb-4">
         <div class="card w-75 mx-auto">
           <div class="card-header d-flex justify-content-between align-items-center">
             <a href="#">{{blogs.blog_title}}</a>
@@ -19,31 +11,68 @@
           </div>
         </div>
       </div>
+{{!-- this can all become a partial later on --}}
+<section style="background-color: #f6f7f8;">
+  <div class="container my-5 py-5 text-dark">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-11 col-lg-9 col-xl-7">
 
+         {{#each blogs.comments}}
+    <h4>Comments</h4>
+        <div class="d-flex flex-start mb-4">
+          <div class="card w-100">
+            <div class="card-body p-4">
+              <div class="">
+                <h5>JOHN Something {{this.user.username}}</h5>
+                <p class="small">{{format_date this.commented_on}}</p>
+                <p>
+                  {{this.comment_content}}
+                </p>
 
-<div class="row d-flex justify-content-center">
-  <div class="col-md-8 col-lg-6">
-    <div class="card shadow-0 border" style="background-color: #f0f2f5;">
-      <div class="card-body p-4">
-        <div class="form-outline mb-4">
-          <input type="text" id="addANote" class="form-control" placeholder="Type comment..." />
-          <label class="form-label" for="addANote">+ Add a note</label>
-        </div>
-
-        <div class="card mb-4">
-          <div class="card-body">
-            <p>Type your note, and hit enter to add it</p>
-
-            <div class="d-flex justify-content-between">
-              <div class="d-flex flex-row align-items-center">
-                <img src="" alt="avatar" width="25" height="25" />
-                <p class="small mb-0 ms-2">Martha</p>
-              </div>
-              <div class="d-flex flex-row align-items-center">
-                <p class="small text-muted mb-0">Upvote?</p>
-                <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
-                <p class="small text-muted mb-0">3</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center">
+                    <a href="#!" class="link-muted me-2"><i class="fas fa-thumbs-up me-1"></i>132</a>
+                    <a href="#!" class="link-muted"><i class="fas fa-thumbs-down me-1"></i>15</a>
+                  </div>
+                  <a href="#!" class="link-muted"><i class="fas fa-reply me-1"></i> Reply</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
+ {{/each}}
+
+      </div>
+    </div>
+<div class="p-3 d-flex justify-content-center">
+      <button type="button" id="comment-button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#commentModal">Add a comment</button>
+  </div>
+</section>
+
+
+<!-- Comment Modal -->
+<div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="commentModalLabel">Add Comment</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="commentInput" class="form-label">Your Comment</label>
+            <textarea class="form-control" id="commentInput" rows="3"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="closer" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="/js/utilities/addComment.js" defer></script>

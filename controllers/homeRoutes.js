@@ -31,19 +31,24 @@ router.get('/', async (req, res) => {
 router.get("/blogs/:id", withAuth, async (req, res) => {
   try {
   const blogData = await Blog.findByPk(req.params.id, {
-    // attributes: ['blog_title', 'blog_content', 'created_on'],
       include: [
       {
-      model: User,
-      attributes: ["username"],
+        model: User,
+        attributes: ["username"],
       },
       {
-      model: Comment,
-      where: {
-        blog_id: req.params.id
-      }
-      },
-  ],
+        model: Comment,
+        where: {
+          blog_id: req.params.id,
+        },
+        include: [
+          {
+            model: User,
+            attributes: ["username"],
+          }
+      ],
+    },
+    ],
   });
   const blogs = blogData.get({ plain: true });
   console.log('seeblog', blogs); //check if 'id' is logged here
