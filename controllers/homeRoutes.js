@@ -1,8 +1,9 @@
 const router = require('express').Router();
-const { Blog, User } = require('../models');
+const { Blog, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 //withAuth is only used in the front end not the backend api routes
 
+//home routee that displays existing blogs
 router.get('/', async (req, res) => {
   try {
     const blogData = await Blog.findAll({
@@ -23,6 +24,37 @@ router.get('/', async (req, res) => {
     });
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+//route to display a single blog
+router.get("/blogs/:id", withAuth, async (req, res) => {
+  try {
+  const blogData = await Blog.findByPk(req.params.id, {
+    // attributes: ['blog_title', 'blog_content', 'created_on'],
+      include: [
+      {
+      model: User,
+      attributes: ["username"],
+      },
+      {
+      model: Comment,
+      where: {
+        blog_id: req.params.id
+      }
+      },
+  ],
+  });
+  const blogs = blogData.get({ plain: true });
+  console.log('seeblog', blogs); //check if 'id' is logged here
+
+  res.render("viewblog", {
+      blogs,
+      logged_in: req.session.logged_in,
+      header: "Single Blog",
+  });
+  } catch (err) {
+  res.status(500).json(err);
   }
 });
 
