@@ -8,7 +8,9 @@ router.post('/comments', async (req, res) => {
 
         console.log("test1 :", req.session.user_id)
 
-        const blogComment = await Comment.create(req.body, {
+        const blogComment = await Comment.create({
+            comment_content: req.body.comment_content,
+            blog_id: req.body.blog_id,
             user_id: req.session.user_id,
         });
 

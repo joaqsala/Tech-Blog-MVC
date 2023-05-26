@@ -16,9 +16,8 @@
   <div class="container my-5 py-5 text-dark">
     <div class="row d-flex justify-content-center">
       <div class="col-md-11 col-lg-9 col-xl-7">
-
-         {{#each blogs.comments}}
     <h4>Comments</h4>
+         {{#each blogs.comments}}
         <div class="d-flex flex-start mb-4">
           <div class="card w-100">
             <div class="card-body p-4">
@@ -64,15 +63,16 @@
             <label for="commentInput" class="form-label">Your Comment</label>
             <textarea class="form-control" id="commentInput" rows="3"></textarea>
           </div>
-        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" id="closer" data-bs-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
+        </form>
     </div>
   </div>
 </div>
 
 
 <script src="/js/utilities/addComment.js" defer></script>
+

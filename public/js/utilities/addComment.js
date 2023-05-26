@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       // Hide the modal
       commentModal.hide();
-        location.replace('/blogs/:id');
+      document.location.reload();
         } else {
         alert('Failed to add comment');
         }
