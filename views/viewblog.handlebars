@@ -45,7 +45,7 @@
       </div>
     </div>
 <div class="p-3 d-flex justify-content-center">
-      <button type="button" id="comment-button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#commentModal">Add a comment</button>
+      <button type="button" id="comment-button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#commentModal" data-blog-id="{{blogs.id}}">Add a comment</button>
   </div>
 </section>
 
@@ -59,7 +59,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form id="commentForm">
           <div class="mb-3">
             <label for="commentInput" class="form-label">Your Comment</label>
             <textarea class="form-control" id="commentInput" rows="3"></textarea>
