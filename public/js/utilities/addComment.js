@@ -21,9 +21,11 @@ document.addEventListener("DOMContentLoaded", function() {
       commentModal.hide();
     });
 
+    console.log(commentForm)
+    
     commentForm.addEventListener("submit", async (event) => {
       event.preventDefault(); // Prevent the default form submission behavior
-
+        console.log("has been submitted")
       // Get the comment content entered by the user
       const commentInput = document.getElementById("commentInput");
       const comment_content = commentInput.value.trim();
@@ -36,14 +38,14 @@ document.addEventListener("DOMContentLoaded", function() {
         body: JSON.stringify({ comment_content, blog_id: blogId })
         });
     
-        if (response.ok) {
+        if (response.status === 200) {
         alert('Comment added successfully!');
     // Reset the form fields
       commentInput.value = "";
 
       // Hide the modal
       commentModal.hide();
-        location.reload();
+        location.replace('/blogs/:id');
         } else {
         alert('Failed to add comment');
         }
