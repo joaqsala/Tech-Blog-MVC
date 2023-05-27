@@ -113,6 +113,13 @@ router.get('/dashboard/newblog', (req, res) => {
   }
 });
 
+router.get('/blog/:blogId/edit', (req, res) => {
+  // get data for blog based on req.params.blogId
+  //.....
+  
+  res.render('edit-blog')
+})
+
 
 
 module.exports = router;

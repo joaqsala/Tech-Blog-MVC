@@ -21,5 +21,9 @@ router.post('/comments', async (req, res) => {
     }
 });
 
+router.put('/:blogId', async (req, res) => {
+    await Blog.update()
+})
+
 
 module.exports = router;
