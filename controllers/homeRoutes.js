@@ -47,8 +47,7 @@ router.get("/blogs/:id", withAuth, async (req, res) => {
             attributes: ["username"],
           }
       ],
-    },
-    ],
+    },],
   });
   const blogs = blogData.get({ plain: true });
   console.log('seeblog', blogs); //check if 'id' is logged here
@@ -63,24 +62,40 @@ router.get("/blogs/:id", withAuth, async (req, res) => {
   }
 });
 
-//route to get login page
+//route for login page
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/');
     return;
   }
-
   res.render('login');
 });
 
+// route for dashboard
+router.get('/dashboard', withAuth, async (req, res) => {
+  try {
+    const blogData = await Blog.findAll({
+        where: {
+          user_id: req.session.user_id,
+        },
+    });
+    const blogs = blogData.map((blog) => blog.get({ plain: true }));
+    console.log(blogs)
 
-
+    res.render('dashboard', {
+      blogs,
+      logged_in: req.session.logged_in, 
+      header: "Dashboard",
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 router.get('/signup', (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/');
     return;
   }
-
   res.render('signup');
 });
 

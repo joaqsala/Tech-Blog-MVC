@@ -1,0 +1,16 @@
+{{#each blogs as |blog| }}
+    <div class="py-4">
+        <div class="card w-75 mx-auto">
+          <a href="/blogs/{{blog.id}}" class="card-header d-flex justify-content-between align-items-center p-3">
+            <span class="float-start">{{blog_title}}</span><span class="float-end">created on {{format_date created_on}}</span>
+          </a>
+        </div>
+      </div>
+</div>
+{{/each}}
+    <div class="pt-4 m-5">
+        <div class="card w-25 mx-auto">
+        <button type="button" class="btn btn-primary btn-lg">+ New Post</button>
+      </div>
+    </div>
+
