@@ -102,7 +102,7 @@ router.get('/signup', (req, res) => {
 });
 
 // get route for making a new blog 
-router.get('/dashboard/newblog', (req, res) => {
+router.get('/dashboard/newblog', withAuth, (req, res) => {
   try {
     res.render('newblog', {
       logged_in: req.session.logged_in, 
@@ -113,10 +113,10 @@ router.get('/dashboard/newblog', (req, res) => {
   }
 });
 
-router.get('/blog/:blogId/edit', (req, res) => {
+router.get('/blog/:blogId/edit', withAuth, (req, res) => {
   // get data for blog based on req.params.blogId
   //.....
-  
+
   res.render('edit-blog')
 })
 
