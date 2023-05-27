@@ -91,6 +91,8 @@ router.get('/dashboard', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// route for signing up
 router.get('/signup', (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/');
@@ -98,5 +100,19 @@ router.get('/signup', (req, res) => {
   }
   res.render('signup');
 });
+
+// get route for making a new blog 
+router.get('/dashboard/newblog', (req, res) => {
+  try {
+    res.render('newblog', {
+      logged_in: req.session.logged_in, 
+      header: "NEW BLOG",
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
 
 module.exports = router;
