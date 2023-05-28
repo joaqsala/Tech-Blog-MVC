@@ -113,12 +113,27 @@ router.get('/dashboard/newblog', withAuth, (req, res) => {
   }
 });
 
-router.get('/blog/:blogId/edit', withAuth, (req, res) => {
-  // get data for blog based on req.params.blogId
-  //.....
+// get route to see/edit/delete existing post
+router.get('/blogs/:id/edit', withAuth, async (req, res) => {
+  try {
+    const blogData = await Blog.findByPk(req.params.id);
 
-  res.render('edit-blog')
-})
+    if (!blogData) {
+      res.status(404).json({ message: 'Blog not found' });
+      return;
+    }
+
+    const blog = blogData.get({ plain: true });
+  
+    res.render("editblog", {
+        blog,
+        logged_in: req.session.logged_in,
+        header: "Edit Blog",
+    });
+    } catch (err) {
+    res.status(500).json(err);
+    }
+  });
 
 
 

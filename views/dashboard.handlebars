@@ -1,7 +1,7 @@
 {{#each blogs as |blog| }}
     <div class="py-4">
         <div class="card w-75 mx-auto">
-          <a href="/blogs/{{blog.id}}" class="card-header d-flex justify-content-between align-items-center p-3">
+          <a href="/blogs/{{blog.id}}/edit" class="card-header d-flex justify-content-between align-items-center p-3">
             <span class="float-start">{{blog_title}}</span><span class="float-end">created on {{format_date created_on}}</span>
           </a>
         </div>
