@@ -24,5 +24,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  document.querySelector('#blog-submit').addEventListener('submit', newBlogFormHandler);
+  document.querySelector('#blog-submit').addEventListener('click', newBlogFormHandler);
 });console.log('Event listener added');
