@@ -28,7 +28,7 @@ router.post('/', async (req, res) => {
             blog_content: req.body.blogContent,
             user_id: req.session.user_id,
         });
-        
+
     res.status(200).json(blogData);
     } catch (err) {
         console.log(err)
@@ -37,8 +37,21 @@ router.post('/', async (req, res) => {
 });
 
 router.put('/:blogId', async (req, res) => {
-    await Blog.update()
-})
-
+    try {
+        const blogData = await Blog.update({
+            blog_title: req.body.blogTitle,
+            blog_content: req.body.blogContent,
+            updated_on: new Date(),
+        },
+        {
+            where: { id: req.params.blogId }
+        }
+    );
+        res.status(200).json(blogData);
+    } catch (err) {
+        console.log(err)
+    res.status(400).json(err);
+    }
+});
 
 module.exports = router;
