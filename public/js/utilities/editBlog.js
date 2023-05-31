@@ -27,5 +27,27 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     document.querySelector('#blog-update-button').addEventListener('click', updateBlogFormHandler);
 
-});
+    
+    const deleteBlogFormHandler = async (event) => {
+        event.preventDefault();
+
+        const blogId = event.target.dataset.blogId;
+
+        const confirmDelete = confirm("Are you sure you want to delete this blog?");
+
+          if (confirmDelete) {
+        const response = await fetch(`/api/blogs/${blogId}`, {
+            method: 'DELETE',
+          });
+
+          if (response.ok) {
+            document.location.replace('/dashboard');
+          } else {
+            alert('Failed to delete blog');
+          }
+        }
+      };
+        document.querySelector('#blog-delete-button').addEventListener('click', deleteBlogFormHandler);
+    }
+);
 

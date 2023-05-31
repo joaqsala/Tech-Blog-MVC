@@ -1,6 +1,5 @@
 const router = require("express").Router();
-const { Blog, User, Comment } = require("../../models");
-const withAuth = require("../../utils/auth");
+const { Blog, Comment } = require("../../models");
 
 //adds a new comment to db (add withAuth after testing)
 router.post('/comments', async (req, res) => {
@@ -44,6 +43,19 @@ router.put('/:blogId', async (req, res) => {
             updated_on: new Date(),
         },
         {
+            where: { id: req.params.blogId }
+        }
+    );
+        res.status(200).json(blogData);
+    } catch (err) {
+        console.log(err)
+    res.status(400).json(err);
+    }
+});
+
+router.delete('/:blogId', async (req, res) => {
+    try {
+        const blogData = await Blog.destroy({
             where: { id: req.params.blogId }
         }
     );
