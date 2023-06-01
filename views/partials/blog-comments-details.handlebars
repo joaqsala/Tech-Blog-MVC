@@ -3,17 +3,10 @@
     <div class='card-body p-4'>
       <div class=''>
         <h5>{{this.user.username}}</h5>
-        <p class='small'>{{format_date this.commented_on}}</p>
+        <p class='small'>commented on {{format_date this.commented_on}}</p>
         <p>
           {{this.comment_content}}
         </p>
-
-        <div class='d-flex justify-content-between align-items-center'>
-          <div class='d-flex align-items-center'>
-          </div>
-          <a href='#!' class='link-muted'><i class='fas fa-reply me-1'></i>
-            Reply</a>
-        </div>
       </div>
     </div>
   </div>
