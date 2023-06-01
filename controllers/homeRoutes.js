@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
     res.render('homepage', {
       blogs,
       logged_in: req.session.logged_in, 
-      header: "CheezeMe",
+      header: "The Tech Blog",
     });
   } catch (err) {
     res.status(500).json(err);
@@ -55,7 +55,7 @@ router.get("/blogs/:id", withAuth, async (req, res) => {
   res.render("viewblog", {
       blogs,
       logged_in: req.session.logged_in,
-      header: "Single Blog",
+      header: "The Tech Blog",
   });
   } catch (err) {
   res.status(500).json(err);
@@ -68,7 +68,9 @@ router.get('/login', (req, res) => {
     res.redirect('/');
     return;
   }
-  res.render('login');
+  res.render('login', {
+    header: "The Tech Blog",
+}) 
 });
 
 // route for dashboard
@@ -85,7 +87,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     res.render('dashboard', {
       blogs,
       logged_in: req.session.logged_in, 
-      header: "Dashboard",
+      header: "Your Dashboard",
     });
   } catch (err) {
     res.status(500).json(err);
@@ -98,7 +100,9 @@ router.get('/signup', (req, res) => {
     res.redirect('/');
     return;
   }
-  res.render('signup');
+  res.render('signup', {
+      header: "The Tech Blog",
+    });
 });
 
 // get route for making a new blog 
@@ -106,7 +110,7 @@ router.get('/dashboard/newblog', withAuth, (req, res) => {
   try {
     res.render('newblog', {
       logged_in: req.session.logged_in, 
-      header: "NEW BLOG",
+      header: "Your Dashboard",
     });
   } catch (err) {
     res.status(500).json(err);
@@ -128,7 +132,7 @@ router.get('/blogs/:id/edit', withAuth, async (req, res) => {
     res.render("editblog", {
         blog,
         logged_in: req.session.logged_in,
-        header: "Edit Blog",
+        header: "Your Dashboard",
     });
     } catch (err) {
     res.status(500).json(err);
