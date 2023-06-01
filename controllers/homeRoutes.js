@@ -38,16 +38,15 @@ router.get("/blogs/:id", withAuth, async (req, res) => {
       },
       {
         model: Comment,
-        where: {
-          blog_id: req.params.id,
-        },
+        attributes: [ "comment_content", "commented_on", "user_id" ],
         include: [
           {
             model: User,
             attributes: ["username"],
           }
       ],
-    },],
+    },
+    ],
   });
   const blogs = blogData.get({ plain: true });
   console.log('seeblog', blogs); //check if 'id' is logged here

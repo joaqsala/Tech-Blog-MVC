@@ -28,6 +28,7 @@ router.post('/', async (req, res) => {
             user_id: req.session.user_id,
         });
 
+        console.log(blogData)
     res.status(200).json(blogData);
     } catch (err) {
         console.log(err)
