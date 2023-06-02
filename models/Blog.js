@@ -42,7 +42,7 @@ Blog.init(
     freezeTableName: true,
     underscored: true,
     modelName: 'blog',
-  }
+  },
 );
 
 module.exports = Blog;
